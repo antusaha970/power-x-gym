@@ -1,0 +1,38 @@
+.about-us {
+    margin: 60px 0;
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+}
+
+.about-text {
+    color: #F4F4F5;
+    font-size: 60px;
+    margin: 0;
+}
+
+.about-title {
+    color: #FCCA42;
+    font-size: 50px;
+    margin: 0;
+}
+
+.about-description {
+    line-height: 160%;
+}
+
+@media screen and (max-width:425px) {
+    .about-title {
+        color: #FCCA42;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .about-text {
+        color: #F4F4F5;
+        font-size: 40px;
+        margin: 0;
+    }
+}
