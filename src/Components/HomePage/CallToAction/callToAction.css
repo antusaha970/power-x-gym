@@ -1,0 +1,40 @@
+.head-title {
+    color: #fff;
+    font-size: 60px;
+    margin: 0;
+    line-height: 70px;
+}
+
+.head-text {
+    color: #fff;
+    font-size: 16px;
+}
+
+.btn-brand {
+    background-color: #FCD842;
+    padding: 10px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.cta-btn {
+    padding: 10px 25px;
+}
+
+.main-area {
+    margin-top: 100px;
+}
+
+@media screen and (max-width:425px) {
+    .main-area {
+        margin-top: 20px;
+    }
+
+    .head-title {
+        font-size: 35px;
+        line-height: 50px;
+    }
+}
