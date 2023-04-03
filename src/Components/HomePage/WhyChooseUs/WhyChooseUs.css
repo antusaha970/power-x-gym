@@ -1,0 +1,13 @@
+.choose-us {
+    margin: 60px 0;
+}
+
+.boader {
+    -webkit-box-shadow: 0.5px 3px 7.5px -2.5px #dddddd;
+    -moz-box-shadow: 0.5px 3px 7.5px -2.5px #dddddd;
+    box-shadow: 0.5px 3px 7.5px -2.5px #dddddd;
+}
+
+.boader:hover {
+    border: 1px solid gold;
+}
