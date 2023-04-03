@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Box, Stack, Typography } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import "./callToAction.css";
+import { motion } from "framer-motion";
 
 const CallToAction = () => {
   return (
@@ -16,7 +17,13 @@ const CallToAction = () => {
               fuga ipsam incidunt blanditiis.. Nemo repellat odit fuga ipsam
               incidunt blanditiis.
             </p>
-            <button className="btn-brand cta-btn">JOIN US</button>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <button className="btn-brand cta-btn">JOIN US</button>
+            </motion.div>
           </Box>
           <Box
             flex={1}

@@ -2,7 +2,6 @@ import React from "react";
 import "./Footer.css";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { FooterList, Typo } from "../../../Styles/Styles";
-import { Facebook } from "@mui/icons-material";
 
 const Footer = () => {
   return (
