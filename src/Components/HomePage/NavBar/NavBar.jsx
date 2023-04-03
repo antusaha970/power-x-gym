@@ -48,7 +48,9 @@ const NavBar = () => {
           </Link>
           <Link className="nav-link">About Us</Link>
           <Link className="nav-link">Blog</Link>
-          <Link className="nav-link">Pricing</Link>
+          <Link to="/pricing" className="nav-link">
+            Pricing
+          </Link>
           <Link className="nav-link">Contact Us</Link>
         </Box>
 
@@ -101,7 +103,7 @@ const NavBar = () => {
             <Link className="nav-link-mbl" onClick={handleClose}>
               Blog
             </Link>
-            <Link className="nav-link-mbl" onClick={handleClose}>
+            <Link to="/pricing" className="nav-link-mbl" onClick={handleClose}>
               Pricing
             </Link>
             <Link className="nav-link-mbl" onClick={handleClose}>
