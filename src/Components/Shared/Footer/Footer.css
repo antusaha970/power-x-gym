@@ -3,3 +3,9 @@
     height: 350px;
     background-color: #171426;
 }
+
+@media screen and (max-width: 768px) {
+    .footer {
+        height: auto;
+    }
+}

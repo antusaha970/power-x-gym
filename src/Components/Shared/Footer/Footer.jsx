@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { FooterList, Typo } from "../../../Styles/Styles";
 import { Facebook } from "@mui/icons-material";
 
@@ -60,10 +60,25 @@ const Footer = () => {
               <FooterList component="p" variant="p"></FooterList>
             </Grid>
             <Grid item lg={2} md={2} sm={2} xs={12}>
-              Footer
+              <FooterList component="p" variant="p" fontWeight="bold">
+                Join our newsletter
+              </FooterList>
+              <FooterList component="p" variant="p">
+                Get exclusive access to our news, updates, offers and many more
+              </FooterList>
             </Grid>
           </Grid>
         </Box>
+        <Typography
+          variant="small"
+          component="p"
+          sx={{
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          &copy;{new Date().getFullYear()} All Rights Reversed
+        </Typography>
       </Container>
     </footer>
   );
