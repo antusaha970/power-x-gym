@@ -1,5 +1,21 @@
 import React from "react";
 import { Container, Box, Typography } from "@mui/material";
+
+const pricingData = [
+  {
+    title: "Advance Plan",
+    price: "140",
+  },
+  {
+    title: "Basic Plan",
+    price: "120",
+  },
+  {
+    title: "Beginners Plan",
+    price: "90",
+  },
+];
+
 const PriceBox = () => {
   return (
     <section>
