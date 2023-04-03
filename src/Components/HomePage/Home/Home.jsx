@@ -4,6 +4,7 @@ import Services from "../Services/Services";
 import AboutUs from "../AboutUs/AboutUs";
 import TrainingProgram from "../TrainingProgram/TrainingProgram";
 import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
+import Footer from "../../Shared/Footer/Footer";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <AboutUs />
       <TrainingProgram />
       <WhyChooseUs />
+      <Footer />
     </>
   );
 };
