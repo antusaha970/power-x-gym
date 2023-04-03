@@ -1,0 +1,17 @@
+.classImg {
+    width: 100%;
+    height: auto;
+}
+
+.classSchedule {
+    margin: 40px 0;
+}
+
+.time-box {
+    text-align: center;
+    padding: 15px;
+    -webkit-box-shadow: 0 0.5px 8px -2px #dddddd;
+    -moz-box-shadow: 0 0.5px 8px -2px #dddddd;
+    box-shadow: 0 0.5px 8px -2px #dddddd;
+    border-radius: 5px;
+}
