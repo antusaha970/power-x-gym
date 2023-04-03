@@ -12,10 +12,14 @@ const CallToAction = () => {
           <Box flex={1}>
             <h1 className="head-title">THE BEST FITNESS STUDIO IN TOWN</h1>
             <p className="head-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
-              repellat odit fuga ipsam incidunt blanditiis.. Nemo repellat odit
-              fuga ipsam incidunt blanditiis.. Nemo repellat odit fuga ipsam
-              incidunt blanditiis.
+              Welcome to Power-X-Gym, the ultimate destination for fitness
+              enthusiasts who are passionate about achieving their fitness goals
+              and transforming their lives. At Power-X-Gym, we believe that
+              fitness is not just a goal, but a way of life. Our
+              state-of-the-art facility is equipped with the latest fitness
+              equipment and cutting-edge technology to help you get the most out
+              of your workout. Our team of certified trainers are dedicated to
+              helping you reach your fitness goals and push your limits.
             </p>
             <motion.div
               whileHover={{ scale: 1.2 }}
