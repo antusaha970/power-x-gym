@@ -1,0 +1,12 @@
+.topHeader {
+    height: 70vh;
+    width: 100%;
+    background-image: url("../../../assets/images/bgHeader.jpg");
+    background-size: cover;
+}
+
+@media screen and (max-width:425px) {
+    .topHeader {
+        height: 50vh;
+    }
+}
