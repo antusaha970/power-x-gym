@@ -15,6 +15,10 @@ const ClassSchedulePage = lazy(() =>
 );
 const Pricing = lazy(() => import("./Components/PricingPage/Pricing/Pricing"));
 
+const Checkout = lazy(() =>
+  import("./Components/CheckoutForm/Checkout/Checkout")
+);
+
 function App() {
   return (
     <Routes>
@@ -43,6 +47,15 @@ function App() {
         element={
           <Suspense fallback={<Loader />}>
             <Pricing />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/checkout"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Checkout />
           </Suspense>
         }
       />
