@@ -1,0 +1,36 @@
+.stapes-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.line-container {
+    position: relative;
+}
+
+.stapes {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FCD842;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8c8c8c;
+    cursor: pointer;
+}
+
+.active {
+    color: #fff;
+}
+
+.line {
+    border-top: 3px dotted rgb(161, 161, 161);
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}

@@ -1,0 +1,16 @@
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 80%;
+    height: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.from-box {
+    margin: 5px 0;
+}

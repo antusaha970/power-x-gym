@@ -3,7 +3,7 @@ import "./TopHeader.css";
 import NavBar from "../../HomePage/NavBar/NavBar";
 import { Typography } from "@mui/material";
 
-const TopHeader = ({ title }) => {
+const TopHeader = ({ title, fontSize }) => {
   return (
     <section className="topHeader">
       <NavBar />
@@ -15,6 +15,7 @@ const TopHeader = ({ title }) => {
           color: "#fff",
           fontWeight: "bold",
           paddingTop: "10%",
+          fontSize: `${fontSize}`,
         }}
       >
         {title}
