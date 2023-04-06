@@ -11,7 +11,7 @@ const Checkout = () => {
   return (
     <FormState.Provider value={[formData, setFormData]}>
       <TopHeader fontSize="40px" title="YOUR GYM MEMBERSHIP" />
-      <Stepper />
+      <Stepper step={1} />
       <CheckoutForm />
       <Footer />
     </FormState.Provider>

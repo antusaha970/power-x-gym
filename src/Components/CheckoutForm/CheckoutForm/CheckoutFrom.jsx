@@ -1,7 +1,17 @@
-import { Container, Grid, InputLabel, MenuItem, Select } from "@mui/material";
-import React from "react";
+import {
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
+import React, { useContext, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import "./CheckoutForm.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { FormState } from "../Checkout/Checkout";
 
 const CheckoutForm = () => {
   const {
@@ -11,7 +21,20 @@ const CheckoutForm = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [gender, setGender] = useState("");
+  const [searchParams] = useSearchParams();
+  const plan = searchParams.get("plan");
+  const navigation = useNavigate();
+  const [formData, setFormData] = useContext(FormState);
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+  const onSubmit = (data) => {
+    data = { ...data, gender, plan };
+    setFormData(data);
+    console.log(formData);
+    navigation("/checkout/step2");
+  };
   return (
     <section>
       <Container maxWidth="lg">
@@ -64,10 +87,39 @@ const CheckoutForm = () => {
                 <input
                   id="MobileNum"
                   type="tel"
-                  {...register("mobileNumber", { required: true })}
+                  {...register("mobileNumber", {
+                    required: true,
+                    minLength: 11,
+                  })}
                   className="form-input"
                 />
+                {errors.mobileNumber && (
+                  <Typography variant="span" component="p">
+                    Please Enter a valid mobile number
+                  </Typography>
+                )}
               </div>
+            </Grid>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
+              <FormControl
+                fullWidth
+                sx={{
+                  width: "80%",
+                }}
+              >
+                <InputLabel id="gender">Gender</InputLabel>
+                <Select
+                  labelId="gender"
+                  id="genderSelect"
+                  value={gender}
+                  label="Gender"
+                  onChange={handleGenderChange}
+                >
+                  <MenuItem value={"male"}>Male</MenuItem>
+                  <MenuItem value={"female"}>Female</MenuItem>
+                  <MenuItem value={"custom"}>Custom</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12}>
               <div className="from-box">
@@ -121,24 +173,8 @@ const CheckoutForm = () => {
                 />
               </div>
             </Grid>
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Controller
-                name="gender"
-                control={control}
-                render={({ field }) => (
-                  <>
-                    <InputLabel id="gender">Gender</InputLabel>
-                    <Select {...field} labelId="gender" label="Gender">
-                      <MenuItem value="Male">Male</MenuItem>
-                      <MenuItem value="Female">Female</MenuItem>
-                      <MenuItem value="Custom">Custom</MenuItem>
-                    </Select>
-                  </>
-                )}
-              />
-            </Grid>
           </Grid>
-          <button type="submit" className="btn-brand">
+          <button type="submit" className="btn-brand submit-btn">
             Submit
           </button>
         </form>

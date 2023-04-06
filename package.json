@@ -13,11 +13,14 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.52.0",
     "framer-motion": "^10.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-router-dom": "^6.10.0"
+    "react-router-dom": "^6.10.0",
+    "stripe": "^11.17.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
