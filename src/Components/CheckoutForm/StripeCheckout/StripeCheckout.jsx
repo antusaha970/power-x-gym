@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  CardElement,
+  useStripe,
+  useElements,
+  PaymentElement,
+  AuBankAccountElement,
+} from "@stripe/react-stripe-js";
+import { Box, Container, Typography } from "@mui/material";
 
 const StripePaymentForm = () => {
   const [paymentError, setPaymentError] = useState(null);
@@ -26,16 +33,48 @@ const StripePaymentForm = () => {
     }
   };
 
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: "18px",
+        color: "#32325d",
+        fontFamily: "Arial, sans-serif",
+        "::placeholder": {
+          color: "#aab7c4",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Card details
-        <CardElement />
-      </label>
-      {paymentError && <div>{paymentError}</div>}
-      {paymentSuccess && <div>Payment succeeded!</div>}
-      <button type="submit">Pay</button>
-    </form>
+    <Container maxWidth="lg">
+      <Box
+        sx={{
+          padding: "30px",
+          border: "1px solid black",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <Typography
+            variant="h5"
+            component="h5"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
+            Credit Card Payment
+          </Typography>
+          <CardElement options={cardElementOptions} />
+          {paymentError && <div>{paymentError}</div>}
+          {paymentSuccess && <div>Payment succeeded!</div>}
+          <button type="submit">Pay</button>
+        </form>
+      </Box>
+    </Container>
   );
 };
 
