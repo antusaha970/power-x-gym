@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   CardElement,
   useStripe,
@@ -12,6 +12,8 @@ import card2 from "../../../assets/images/card2.png";
 import card3 from "../../../assets/images/card3.png";
 import "./StripeCheckout.css";
 import { useNavigate } from "react-router-dom";
+import { client } from "../../../Api/Client";
+import { RegisteredUserContext } from "../../../Contexts/Contexts";
 
 const StripePaymentForm = () => {
   const [paymentError, setPaymentError] = useState(null);
@@ -54,9 +56,20 @@ const StripePaymentForm = () => {
       },
     },
   };
-
-  const handleNextStep = () => {
-    navigation("/checkout/step3");
+  const [user, setUser] = useContext(RegisteredUserContext);
+  const handleNextStep = async () => {
+    console.log(user);
+    try {
+      const response = await client.post("/registerData", user);
+      const mailResponse = await client.post("/sendMail", {
+        email: user.email,
+      });
+      console.log(response.data);
+      console.log(mailResponse.data);
+    } catch (error) {
+      console.log(error);
+    }
+    // navigation("/checkout/step3");
   };
 
   return (

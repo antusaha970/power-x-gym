@@ -1,8 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/HomePage/Home/Home";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import Loader from "./Components/Shared/Loader/Loader";
+import { RegisteredUserContext } from "./Contexts/Contexts";
 
 const OurClasses = lazy(() =>
   import("./Components/ClassesPage/OurClasses/OurClasses")
@@ -28,64 +29,67 @@ const CheckoutStep3 = lazy(() =>
 );
 
 function App() {
+  const [user, setUser] = useState({});
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <RegisteredUserContext.Provider value={[user, setUser]}>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Route
-        path="/ourClasses"
-        element={
-          <Suspense fallback={<Loader />}>
-            <OurClasses />
-          </Suspense>
-        }
-      />
+        <Route
+          path="/ourClasses"
+          element={
+            <Suspense fallback={<Loader />}>
+              <OurClasses />
+            </Suspense>
+          }
+        />
 
-      <Route
-        path="/classSchedule"
-        element={
-          <Suspense fallback={<Loader />}>
-            <ClassSchedulePage />
-          </Suspense>
-        }
-      />
+        <Route
+          path="/classSchedule"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ClassSchedulePage />
+            </Suspense>
+          }
+        />
 
-      <Route
-        path="/pricing"
-        element={
-          <Suspense fallback={<Loader />}>
-            <Pricing />
-          </Suspense>
-        }
-      />
+        <Route
+          path="/pricing"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Pricing />
+            </Suspense>
+          }
+        />
 
-      <Route
-        path="/checkout"
-        element={
-          <Suspense fallback={<Loader />}>
-            <Checkout />
-          </Suspense>
-        }
-      />
+        <Route
+          path="/checkout"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Checkout />
+            </Suspense>
+          }
+        />
 
-      <Route
-        path="/checkout/step2"
-        element={
-          <Suspense fallback={<Loader />}>
-            <CheckoutStep2 />
-          </Suspense>
-        }
-      />
+        <Route
+          path="/checkout/step2"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CheckoutStep2 />
+            </Suspense>
+          }
+        />
 
-      <Route
-        path="/checkout/step3"
-        element={
-          <Suspense fallback={<Loader />}>
-            <CheckoutStep3 />
-          </Suspense>
-        }
-      />
-    </Routes>
+        <Route
+          path="/checkout/step3"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CheckoutStep3 />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </RegisteredUserContext.Provider>
   );
 }
 

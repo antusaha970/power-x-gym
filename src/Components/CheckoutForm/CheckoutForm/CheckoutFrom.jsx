@@ -8,31 +8,29 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "./CheckoutForm.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { FormState } from "../Checkout/Checkout";
+import { RegisteredUserContext } from "../../../Contexts/Contexts";
 
 const CheckoutForm = () => {
   const {
     register,
     handleSubmit,
-    control,
-    watch,
     formState: { errors },
   } = useForm();
   const [gender, setGender] = useState("");
   const [searchParams] = useSearchParams();
   const plan = searchParams.get("plan");
   const navigation = useNavigate();
-  const [formData, setFormData] = useContext(FormState);
+  const [user, setUser] = useContext(RegisteredUserContext);
   const handleGenderChange = (e) => {
     setGender(e.target.value);
   };
   const onSubmit = (data) => {
     data = { ...data, gender, plan };
-    setFormData(data);
-    console.log(formData);
+    setUser(data);
+    console.log(user);
     navigation("/checkout/step2");
   };
   return (
