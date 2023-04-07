@@ -28,6 +28,10 @@ const CheckoutStep3 = lazy(() =>
   import("./Components/CheckoutForm/CheckoutStep3/CheckoutStep3")
 );
 
+const AdminLogin = lazy(() =>
+  import("./Components/Admin/AdminLogin/AdminLogin")
+);
+
 function App() {
   const [user, setUser] = useState({});
   return (
@@ -85,6 +89,15 @@ function App() {
           element={
             <Suspense fallback={<Loader />}>
               <CheckoutStep3 />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AdminLogin />
             </Suspense>
           }
         />
