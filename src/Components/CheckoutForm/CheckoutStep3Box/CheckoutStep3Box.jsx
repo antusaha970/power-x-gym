@@ -1,5 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
+import Confetti from "react-confetti";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutStep3Box = () => {
@@ -7,10 +8,17 @@ const CheckoutStep3Box = () => {
   const handleBackHome = () => {
     navigation("/");
   };
-
+  let width = window.innerWidth - window.innerWidth * 0.1;
+  let height = window.innerHeight;
   return (
     <section>
       <Container maxWidth="lg">
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          numberOfPieces={450}
+        />
         <Typography
           variant="h5"
           component="h3"
