@@ -23,6 +23,10 @@ const CheckoutStep2 = lazy(() =>
   import("./Components/CheckoutForm/CheckoutStep2/CheckoutStep2")
 );
 
+const CheckoutStep3 = lazy(() =>
+  import("./Components/CheckoutForm/CheckoutStep3/CheckoutStep3")
+);
+
 function App() {
   return (
     <Routes>
@@ -69,6 +73,15 @@ function App() {
         element={
           <Suspense fallback={<Loader />}>
             <CheckoutStep2 />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/checkout/step3"
+        element={
+          <Suspense fallback={<Loader />}>
+            <CheckoutStep3 />
           </Suspense>
         }
       />

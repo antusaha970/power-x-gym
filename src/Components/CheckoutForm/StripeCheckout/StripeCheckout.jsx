@@ -6,16 +6,21 @@ import {
   PaymentElement,
   AuBankAccountElement,
 } from "@stripe/react-stripe-js";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import card1 from "../../../assets/images/card1.png";
+import card2 from "../../../assets/images/card2.png";
+import card3 from "../../../assets/images/card3.png";
+import "./StripeCheckout.css";
+import { useNavigate } from "react-router-dom";
 
 const StripePaymentForm = () => {
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-
+  const navigation = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (event) => {
+  const handlePayNow = async (event) => {
     event.preventDefault();
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -36,7 +41,7 @@ const StripePaymentForm = () => {
   const cardElementOptions = {
     style: {
       base: {
-        fontSize: "18px",
+        fontSize: "16px",
         color: "#32325d",
         fontFamily: "Arial, sans-serif",
         "::placeholder": {
@@ -50,6 +55,10 @@ const StripePaymentForm = () => {
     },
   };
 
+  const handleNextStep = () => {
+    navigation("/checkout/step3");
+  };
+
   return (
     <Container maxWidth="lg">
       <Box
@@ -58,21 +67,52 @@ const StripePaymentForm = () => {
           border: "1px solid black",
         }}
       >
-        <form onSubmit={handleSubmit}>
-          <Typography
-            variant="h5"
-            component="h5"
+        <form>
+          <Stack
+            direction={{ xs: "column", lg: "row", md: "row" }}
+            justifyContent="space-between"
+            alignItems="center"
             sx={{
-              fontWeight: "bold",
+              paddingBottom: "20px",
             }}
           >
-            Credit Card Payment
-          </Typography>
+            <Typography
+              variant="h5"
+              component="h5"
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
+              Credit Card Payment
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img src={card1} alt="card" className="cardImg" />
+              <img src={card2} alt="card" className="cardImg" />
+              <img src={card3} alt="card" className="cardImg" />
+            </Box>
+          </Stack>
           <CardElement options={cardElementOptions} />
           {paymentError && <div>{paymentError}</div>}
           {paymentSuccess && <div>Payment succeeded!</div>}
-          <button type="submit">Pay</button>
         </form>
+      </Box>
+      <Box
+        sx={{
+          margin: "15px 0",
+        }}
+      >
+        <button className="btn-brand pay-btn" onClick={handleNextStep}>
+          Pay later
+        </button>
+        <button className="btn-brand pay-btn" onClick={handlePayNow}>
+          Pay With Card
+        </button>
       </Box>
     </Container>
   );
