@@ -57,19 +57,24 @@ const StripePaymentForm = () => {
     },
   };
   const [user, setUser] = useContext(RegisteredUserContext);
+
   const handleNextStep = async () => {
-    console.log(user);
+    // This function is sending registered user data to database and sending mail to user after success it will navigate user to step 3
     try {
       const response = await client.post("/registerData", user);
       const mailResponse = await client.post("/sendMail", {
         email: user.email,
+        plan: user.plan,
       });
-      console.log(response.data);
-      console.log(mailResponse.data);
+      if (response.data && mailResponse.data) {
+        navigation("/checkout/step3");
+      } else {
+        alert("Something went wrong");
+        throw new Error("Something went wrong");
+      }
     } catch (error) {
       console.log(error);
     }
-    // navigation("/checkout/step3");
   };
 
   return (
