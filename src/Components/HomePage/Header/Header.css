@@ -1,6 +1,6 @@
 .header-bg {
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     background-image: url("../../../assets/images/bgHeader.jpg");
     background-size: cover;
 }

@@ -12,6 +12,7 @@ import React from "react";
 import "./ClassSchedulemid.css";
 import classImg from "../../../assets/images/class4-min.jpg";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { Link } from "react-router-dom";
 
 const listData = [
   { title: "Having Slimmer Shaper Thing" },
@@ -109,7 +110,9 @@ const ClassScheduleMid = () => {
                 marginTop: "20px",
               }}
             >
-              <button className="btn-brand cta-btn">JOIN US</button>
+              <button className="btn-brand cta-btn">
+                <Link to="/pricing">JOIN US</Link>
+              </button>
             </Box>
           </Grid>
         </Grid>

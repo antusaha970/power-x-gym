@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Box, Stack, Typography } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import "./callToAction.css";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const CallToAction = () => {
   return (
@@ -21,13 +21,9 @@ const CallToAction = () => {
               of your workout. Our team of certified trainers are dedicated to
               helping you reach your fitness goals and push your limits.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <button className="btn-brand cta-btn">JOIN US</button>
-            </motion.div>
+            <button className="btn-brand cta-btn">
+              <Link to="/ourClasses">JOIN US</Link>
+            </button>
           </Box>
           <Box
             flex={1}

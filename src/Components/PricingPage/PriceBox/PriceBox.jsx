@@ -83,8 +83,16 @@ const PriceBox = () => {
               color: "#bcbcbc",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-            corrupti reprehenderit qui quo ratione.
+            Power X Gym offers three different pricing plans to cater to
+            different fitness goals and budgets. The Basic Plan starts at
+            $120/month and includes access to all basic gym equipment and
+            facilities, as well as a personal fitness consultation. The Advance
+            Plan starts at $140/month and includes everything in the Advanced
+            Plan, as well as access to specialized equipment, priority booking
+            for classes and training sessions, and a nutrition consultation. No
+            matter which plan you choose, Power X Gym is committed to helping
+            you achieve your fitness goals in a supportive and empowering
+            environment.
           </Typography>
         </Box>
         <Box
@@ -133,6 +141,20 @@ const PriceBox = () => {
                     >
                       {price.title}
                     </Typography>
+                    <Typography
+                      variant="h5"
+                      component="p"
+                      sx={{
+                        color: "#FCD842",
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        textTransform: "uppercase",
+                        fontSize: "40px",
+                      }}
+                    >
+                      ${price.price}
+                    </Typography>
+
                     <List component="ul">
                       {price.listOfParks.map((list) => (
                         <ListItemButton key={list}>
