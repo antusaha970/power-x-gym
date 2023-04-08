@@ -1,4 +1,4 @@
-import { AccountCircle, Email, Lock } from "@mui/icons-material";
+import { Email, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
