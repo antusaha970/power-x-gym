@@ -44,6 +44,7 @@ const AllUserInfo = () => {
                   <TableCell align="right">Zip Code</TableCell>
                   <TableCell align="right">Gender</TableCell>
                   <TableCell align="right">Plan</TableCell>
+                  <TableCell align="right">Payment</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -64,6 +65,7 @@ const AllUserInfo = () => {
                     <TableCell align="right">{row.zipCode}</TableCell>
                     <TableCell align="right">{row.gender}</TableCell>
                     <TableCell align="right">{row.plan}</TableCell>
+                    <TableCell align="right">{row.payment}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

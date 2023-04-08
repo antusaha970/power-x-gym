@@ -18,6 +18,7 @@ import { RegisteredUserContext } from "../../../Contexts/Contexts";
 const StripePaymentForm = () => {
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [user, setUser] = useContext(RegisteredUserContext);
   const navigation = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
@@ -37,6 +38,24 @@ const StripePaymentForm = () => {
       setPaymentSuccess(true);
       setPaymentError(null);
       // Here you would handle the successful payment, for example by sending the paymentMethod.id to your server
+      const updatedUser = { ...user, payment: "paid" };
+      setUser(updatedUser);
+      try {
+        const response = await client.post("/registerData", updatedUser);
+        const mailResponse = await client.post("/sendMail", {
+          email: user.email,
+          plan: user.plan,
+          payment: true,
+        });
+        if (response.data && mailResponse.data) {
+          navigation("/checkout/step3");
+        } else {
+          alert("Something went wrong");
+          throw new Error("Something went wrong");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -56,15 +75,17 @@ const StripePaymentForm = () => {
       },
     },
   };
-  const [user, setUser] = useContext(RegisteredUserContext);
 
   const handleNextStep = async () => {
     // This function is sending registered user data to database and sending mail to user after success it will navigate user to step 3
+    const updatedUser = { ...user, payment: "pending" };
+    setUser(updatedUser);
     try {
-      const response = await client.post("/registerData", user);
+      const response = await client.post("/registerData", updatedUser);
       const mailResponse = await client.post("/sendMail", {
         email: user.email,
         plan: user.plan,
+        payment: false,
       });
       if (response.data && mailResponse.data) {
         navigation("/checkout/step3");
