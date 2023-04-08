@@ -7,10 +7,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { client } from "../../../Api/Client";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "../../../Contexts/Contexts";
 
 const AdminLogin = () => {
   const {
@@ -23,12 +24,14 @@ const AdminLogin = () => {
       password: "",
     },
   });
+  const [admin, setAdmin] = useContext(AdminContext);
   const navigation = useNavigate();
   const onSubmit = async (data) => {
     console.log(data);
     try {
       const response = await client.post("/isAdmin", data);
       if (response.data) {
+        setAdmin(true);
         navigation("/admin/dashboard/menu");
       } else {
         alert("Wrong email or password");

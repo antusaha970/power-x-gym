@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Components/HomePage/Home/Home";
 import { Suspense, lazy, useState } from "react";
 import Loader from "./Components/Shared/Loader/Loader";
-import { RegisteredUserContext } from "./Contexts/Contexts";
+import { AdminContext, RegisteredUserContext } from "./Contexts/Contexts";
 
 const OurClasses = lazy(() =>
   import("./Components/ClassesPage/OurClasses/OurClasses")
@@ -31,77 +31,90 @@ const CheckoutStep3 = lazy(() =>
 const AdminLogin = lazy(() =>
   import("./Components/Admin/AdminLogin/AdminLogin")
 );
+const AdminMenu = lazy(() => import("./Components/Admin/AdminMenu/AdminMenu"));
 
 function App() {
   const [user, setUser] = useState({});
+  const [admin, setAdmin] = useState(false);
   return (
     <RegisteredUserContext.Provider value={[user, setUser]}>
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <AdminContext.Provider value={[admin, setAdmin]}>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route
-          path="/ourClasses"
-          element={
-            <Suspense fallback={<Loader />}>
-              <OurClasses />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/ourClasses"
+            element={
+              <Suspense fallback={<Loader />}>
+                <OurClasses />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/classSchedule"
-          element={
-            <Suspense fallback={<Loader />}>
-              <ClassSchedulePage />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/classSchedule"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ClassSchedulePage />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/pricing"
-          element={
-            <Suspense fallback={<Loader />}>
-              <Pricing />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/pricing"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Pricing />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/checkout"
-          element={
-            <Suspense fallback={<Loader />}>
-              <Checkout />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/checkout"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Checkout />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/checkout/step2"
-          element={
-            <Suspense fallback={<Loader />}>
-              <CheckoutStep2 />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/checkout/step2"
+            element={
+              <Suspense fallback={<Loader />}>
+                <CheckoutStep2 />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/checkout/step3"
-          element={
-            <Suspense fallback={<Loader />}>
-              <CheckoutStep3 />
-            </Suspense>
-          }
-        />
+          <Route
+            path="/checkout/step3"
+            element={
+              <Suspense fallback={<Loader />}>
+                <CheckoutStep3 />
+              </Suspense>
+            }
+          />
 
-        <Route
-          path="/admin"
-          element={
-            <Suspense fallback={<Loader />}>
-              <AdminLogin />
-            </Suspense>
-          }
-        />
-      </Routes>
+          <Route
+            path="/admin"
+            element={
+              <Suspense fallback={<Loader />}>
+                <AdminLogin />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/admin/dashboard/menu"
+            element={
+              <Suspense fallback={<Loader />}>
+                <AdminMenu />
+              </Suspense>
+            }
+          />
+        </Routes>
+      </AdminContext.Provider>
     </RegisteredUserContext.Provider>
   );
 }
