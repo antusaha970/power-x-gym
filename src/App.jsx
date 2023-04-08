@@ -33,6 +33,9 @@ const AdminLogin = lazy(() =>
   import("./Components/Admin/AdminLogin/AdminLogin")
 );
 const AdminMenu = lazy(() => import("./Components/Admin/AdminMenu/AdminMenu"));
+const AllUserInfo = lazy(() =>
+  import("./Components/Admin/AllUserInfo/AllUserInfo")
+);
 
 function App() {
   const [user, setUser] = useState({});
@@ -112,6 +115,16 @@ function App() {
               <Suspense fallback={<Loader />}>
                 <PrivateRoute isSignedIn={admin}>
                   <AdminMenu />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/admin/dashboard/userInfo"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PrivateRoute isSignedIn={admin}>
+                  <AllUserInfo />
                 </PrivateRoute>
               </Suspense>
             }
