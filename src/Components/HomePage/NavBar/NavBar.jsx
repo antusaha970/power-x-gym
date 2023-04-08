@@ -47,7 +47,9 @@ const NavBar = () => {
             Our Classes
           </Link>
           <Link className="nav-link">About Us</Link>
-          <Link className="nav-link">Blog</Link>
+          <Link className="nav-link" to="/blogs">
+            Blog
+          </Link>
           <Link to="/pricing" className="nav-link">
             Pricing
           </Link>
@@ -100,7 +102,7 @@ const NavBar = () => {
             <Link className="nav-link-mbl" onClick={handleClose}>
               About Us
             </Link>
-            <Link className="nav-link-mbl" onClick={handleClose}>
+            <Link className="nav-link-mbl" to="/blogs" onClick={handleClose}>
               Blog
             </Link>
             <Link to="/pricing" className="nav-link-mbl" onClick={handleClose}>

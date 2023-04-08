@@ -32,10 +32,14 @@ const CheckoutStep3 = lazy(() =>
 const AdminLogin = lazy(() =>
   import("./Components/Admin/AdminLogin/AdminLogin")
 );
+
 const AdminMenu = lazy(() => import("./Components/Admin/AdminMenu/AdminMenu"));
+
 const AllUserInfo = lazy(() =>
   import("./Components/Admin/AllUserInfo/AllUserInfo")
 );
+
+const Blog = lazy(() => import("./Components/BlogPage/Blog/Blog"));
 
 function App() {
   const [user, setUser] = useState({});
@@ -69,6 +73,15 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Pricing />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/blogs"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Blog />
               </Suspense>
             }
           />
