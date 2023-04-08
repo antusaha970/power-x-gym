@@ -4,6 +4,7 @@ import Home from "./Components/HomePage/Home/Home";
 import { Suspense, lazy, useState } from "react";
 import Loader from "./Components/Shared/Loader/Loader";
 import { AdminContext, RegisteredUserContext } from "./Contexts/Contexts";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const OurClasses = lazy(() =>
   import("./Components/ClassesPage/OurClasses/OurClasses")
@@ -109,7 +110,9 @@ function App() {
             path="/admin/dashboard/menu"
             element={
               <Suspense fallback={<Loader />}>
-                <AdminMenu />
+                <PrivateRoute isSignedIn={admin}>
+                  <AdminMenu />
+                </PrivateRoute>
               </Suspense>
             }
           />

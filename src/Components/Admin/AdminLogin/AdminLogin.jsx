@@ -10,7 +10,7 @@ import {
 import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { client } from "../../../Api/Client";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AdminContext } from "../../../Contexts/Contexts";
 
 const AdminLogin = () => {
@@ -26,13 +26,16 @@ const AdminLogin = () => {
   });
   const [admin, setAdmin] = useContext(AdminContext);
   const navigation = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const { from } = location.state || { from: "/admin/dashboard/menu" };
   const onSubmit = async (data) => {
     console.log(data);
     try {
       const response = await client.post("/isAdmin", data);
       if (response.data) {
         setAdmin(true);
-        navigation("/admin/dashboard/menu");
+        navigation(from);
       } else {
         alert("Wrong email or password");
       }
