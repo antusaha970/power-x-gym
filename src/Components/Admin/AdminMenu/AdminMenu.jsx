@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AdminHeader from "../AdminHeader/AdminHeader";
 
-const MenuButton = styled(Button)`
+export const MenuButton = styled(Button)`
   margin-bottom: 10px;
   & a {
     text-decoration: none;
