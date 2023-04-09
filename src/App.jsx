@@ -40,6 +40,7 @@ const AllUserInfo = lazy(() =>
 );
 
 const Blog = lazy(() => import("./Components/BlogPage/Blog/Blog"));
+const BlogPost = lazy(() => import("./Components/Admin/BlogPost/BlogPost"));
 
 function App() {
   const [user, setUser] = useState({});
@@ -138,6 +139,17 @@ function App() {
               <Suspense fallback={<Loader />}>
                 <PrivateRoute isSignedIn={admin}>
                   <AllUserInfo />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/admin/dashboard/makeBlog"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PrivateRoute isSignedIn={admin}>
+                  <BlogPost />
                 </PrivateRoute>
               </Suspense>
             }

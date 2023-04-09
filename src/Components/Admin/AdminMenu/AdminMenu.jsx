@@ -25,7 +25,7 @@ const AdminMenu = () => {
               </Link>
             </MenuButton>
             <MenuButton variant="contained">
-              <Link to="/admin/dashboard/userInfo">Make a blog post</Link>
+              <Link to="/admin/dashboard/makeBlog">Make a blog post</Link>
             </MenuButton>
           </Stack>
         </Box>
