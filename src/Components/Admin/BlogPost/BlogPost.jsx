@@ -1,4 +1,11 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Input,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import AdminHeader from "../AdminHeader/AdminHeader";
 import { useForm, Controller } from "react-hook-form";
@@ -13,7 +20,13 @@ const BlogPost = () => {
     },
   });
   const [file, setFile] = useState(null);
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    data = { ...data, coverImg: file };
+    console.log(data);
+  };
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
   return (
     <section>
       <Container maxWidth="lg">
@@ -78,6 +91,16 @@ const BlogPost = () => {
                 />
               )}
             />
+            <Box
+              sx={{
+                padding: "10px 0",
+              }}
+            >
+              <label htmlFor="coverImg">Enter Cover Image</label>
+              <br />
+              <br />
+              <input type="file" id="coverImg" onChange={handleFile} />
+            </Box>
             <Button variant="contained" type="submit">
               Submit
             </Button>
