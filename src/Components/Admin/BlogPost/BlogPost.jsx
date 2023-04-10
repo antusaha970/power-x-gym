@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import AdminHeader from "../AdminHeader/AdminHeader";
 import { useForm, Controller } from "react-hook-form";
 import { client } from "../../../Api/Client";
+import { MenuButton } from "../AdminMenu/AdminMenu";
+import { Link } from "react-router-dom";
 
 const BlogPost = () => {
   const { control, handleSubmit, reset } = useForm({
@@ -117,6 +119,16 @@ const BlogPost = () => {
             </Button>
           </form>
         </Box>
+        <MenuButton
+          variant="contained"
+          sx={{
+            display: "block",
+            margin: "auto",
+            marginTop: "20px",
+          }}
+        >
+          <Link to="/admin/dashboard/menu">Back to menu</Link>
+        </MenuButton>
       </Container>
     </section>
   );
