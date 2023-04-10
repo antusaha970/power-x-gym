@@ -12,6 +12,7 @@ import { useForm, Controller } from "react-hook-form";
 import { client } from "../../../Api/Client";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AdminContext } from "../../../Contexts/Contexts";
+import NavBar from "../../HomePage/NavBar/NavBar";
 
 const AdminLogin = () => {
   const {

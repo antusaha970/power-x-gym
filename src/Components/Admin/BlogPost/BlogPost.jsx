@@ -1,28 +1,39 @@
-import {
-  Box,
-  Button,
-  Container,
-  Input,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import AdminHeader from "../AdminHeader/AdminHeader";
 import { useForm, Controller } from "react-hook-form";
+import { client } from "../../../Api/Client";
 
 const BlogPost = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
       blogBody: "",
       author: "",
-      coverImg: null,
     },
   });
   const [file, setFile] = useState(null);
-  const onSubmit = (data) => {
-    data = { ...data, coverImg: file };
-    console.log(data);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("blogData", JSON.stringify(data));
+    try {
+      const response = await client.post("/postBlog", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.data) {
+        alert("Blog is posted successfully");
+        setFile(null);
+        reset();
+      } else {
+        alert("Please try again later");
+        reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleFile = (e) => {
     setFile(e.target.files[0]);
