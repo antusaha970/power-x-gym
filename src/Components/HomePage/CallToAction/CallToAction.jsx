@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Box, Stack, Typography } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
+import SportsKabaddiIcon from "@mui/icons-material/SportsKabaddi";
 import "./callToAction.css";
 import { Link } from "react-router-dom";
 
 const CallToAction = () => {
+  const iconArray = [FitnessCenterIcon, MonitorHeartIcon, SportsKabaddiIcon];
+  const [CurrentIcon, setCurrentIcon] = useState(FitnessCenterIcon);
+  const [count, setCount] = useState(0);
+
   return (
     <main className="main-area">
       <Container maxWidth="lg">
@@ -29,7 +35,7 @@ const CallToAction = () => {
             flex={1}
             display={{ lg: "block", md: "block", sm: "block", xs: "none" }}
           >
-            <FitnessCenterIcon
+            <CurrentIcon
               sx={{
                 color: "white",
                 fontSize: "300px",

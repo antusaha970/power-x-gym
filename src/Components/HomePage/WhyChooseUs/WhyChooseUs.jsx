@@ -1,25 +1,25 @@
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import "./WhyChooseUs.css";
-import pic1 from "../../../assets/images/choose1.png";
-import pic2 from "../../../assets/images/choose2.png";
-import pic3 from "../../../assets/images/choose3.png";
+import CardGiftcardTwoToneIcon from "@mui/icons-material/CardGiftcardTwoTone";
+import SkateboardingTwoToneIcon from "@mui/icons-material/SkateboardingTwoTone";
+import DirectionsBikeTwoToneIcon from "@mui/icons-material/DirectionsBikeTwoTone";
 
 const whyToChooseUsData = [
   {
-    img: pic1,
+    img: CardGiftcardTwoToneIcon,
     title: "FREE FITNESS TRANNIG",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
   },
   {
-    img: pic2,
+    img: SkateboardingTwoToneIcon,
     title: "TONS OF CARDIO & STRENGTH ",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
   },
   {
-    img: pic3,
+    img: DirectionsBikeTwoToneIcon,
     title: "NO COMMITMENT MEMBERSHIP",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
@@ -53,7 +53,12 @@ const WhyChooseUs = () => {
                     textAlign: "center",
                   }}
                 >
-                  <img src={data.img} alt="service" className="service-icon" />
+                  <data.img
+                    sx={{
+                      fontSize: "60px",
+                      color: "#000",
+                    }}
+                  />
                   <Typography
                     variant="h4"
                     component="h5"
