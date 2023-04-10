@@ -16,6 +16,7 @@ const TopHeader = ({ title, fontSize }) => {
           fontWeight: "bold",
           paddingTop: "10%",
           fontSize: `${fontSize}`,
+          textTransform: "uppercase",
         }}
       >
         {title}

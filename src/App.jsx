@@ -41,6 +41,7 @@ const AllUserInfo = lazy(() =>
 
 const Blog = lazy(() => import("./Components/BlogPage/Blog/Blog"));
 const BlogPost = lazy(() => import("./Components/Admin/BlogPost/BlogPost"));
+const ViewBlog = lazy(() => import("./Components/BlogPage/ViewBlog/ViewBlog"));
 
 function App() {
   const [user, setUser] = useState({});
@@ -83,6 +84,15 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Blog />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/blogs/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ViewBlog />
               </Suspense>
             }
           />
