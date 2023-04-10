@@ -6,9 +6,9 @@ import styled from "@emotion/styled";
 import bg1 from "../../../assets/images/service1-min.jpg";
 import bg2 from "../../../assets/images/service2-min.jpg";
 import bg3 from "../../../assets/images/service3-min.jpg";
-import serviceIcon1 from "../../../assets/images/serviceIcon1.png";
-import serviceIcon2 from "../../../assets/images/serviceIcon2.png";
-import serviceIcon3 from "../../../assets/images/serviceIcon3.png";
+import WatchTwoToneIcon from "@mui/icons-material/WatchTwoTone";
+import SportsGymnasticsTwoToneIcon from "@mui/icons-material/SportsGymnasticsTwoTone";
+import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
 
 const serviceData = [
   {
@@ -16,32 +16,31 @@ const serviceData = [
     title: "PROGRESSION",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
-    icon: serviceIcon1,
+    icon: WatchTwoToneIcon,
   },
   {
     img: bg2,
     title: "WORKOUT",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
-    icon: serviceIcon2,
+    icon: SportsGymnasticsTwoToneIcon,
   },
   {
     img: bg3,
     title: "NUTRITION",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo repellat odit fuga ipsam incidunt blanditiis. Nemo repellat odit fuga ipsam incidunt blanditiis.",
-    icon: serviceIcon3,
+    icon: FavoriteTwoToneIcon,
   },
 ];
+const BGImageBase = styled("div")(({ bgImage }) => ({
+  backgroundImage: bgImage,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  width: "100%",
+  height: "350px",
+}));
 const Services = () => {
-  const BGImageBase = styled("div")(({ bgImage }) => ({
-    backgroundImage: bgImage,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    width: "100%",
-    height: "350px",
-  }));
-
   return (
     <section className="services">
       <Container maxWidth="lg">
@@ -57,10 +56,11 @@ const Services = () => {
                     paddingTop: "25px",
                   }}
                 >
-                  <img
-                    src={service.icon}
-                    alt="service"
-                    className="service-icon"
+                  <service.icon
+                    sx={{
+                      color: "#fff",
+                      fontSize: "85px",
+                    }}
                   />
                   <Typography
                     variant="h4"
