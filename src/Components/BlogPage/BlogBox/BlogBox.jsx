@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   Button,
   Card,
@@ -8,6 +9,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
+
+const ReadMoreButton = styled(Button)`
+  & a {
+    text-decoration: none;
+    color: #ffff;
+  }
+`;
 
 const BlogBox = ({ blog }) => {
   return (
@@ -16,7 +25,7 @@ const BlogBox = ({ blog }) => {
         <CardMedia
           sx={{ height: 180 }}
           image={`data:image/png;base64, ${blog.image.img}`}
-          title="green iguana"
+          title={blog.title}
         />
         <CardContent>
           <Typography
@@ -42,9 +51,9 @@ const BlogBox = ({ blog }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="info" variant="contained">
-            Read More
-          </Button>
+          <ReadMoreButton size="small" color="info" variant="contained">
+            <Link to={`/blogs/${blog._id}`}>Read More</Link>
+          </ReadMoreButton>
         </CardActions>
       </Card>
     </Grid>
