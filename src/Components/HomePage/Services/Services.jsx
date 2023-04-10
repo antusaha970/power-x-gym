@@ -42,7 +42,7 @@ const BGImageBase = styled("div")(({ bgImage }) => ({
 }));
 const Services = () => {
   return (
-    <section className="services">
+    <section className="services" id="service">
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           {serviceData.map((service) => (

@@ -5,7 +5,7 @@ import aboutImg from "../../../assets/images/about.jpg";
 
 const AboutUs = () => {
   return (
-    <section className="about-us">
+    <section className="about-us" id="about">
       <Container maxWidth="lg">
         <Stack direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}>
           <Box flex={1}>

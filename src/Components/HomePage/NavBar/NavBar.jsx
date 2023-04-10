@@ -17,9 +17,17 @@ const NavBar = () => {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleClose = () => {
+  const handleClickScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const handleClose = (id = null) => {
     setAnchorEl(null);
+    if (id) {
+      handleClickScroll(id);
+    }
   };
 
   return (
@@ -42,11 +50,18 @@ const NavBar = () => {
           <Link className="nav-link" to="/">
             Home
           </Link>
-          <Link className="nav-link">Services</Link>
+          <Link
+            onClick={() => handleClickScroll("service")}
+            className="nav-link"
+          >
+            Services
+          </Link>
           <Link to="/ourClasses" className="nav-link">
             Our Classes
           </Link>
-          <Link className="nav-link">About Us</Link>
+          <Link className="nav-link" onClick={() => handleClickScroll("about")}>
+            About Us
+          </Link>
           <Link className="nav-link" to="/blogs">
             Blog
           </Link>
@@ -89,7 +104,10 @@ const NavBar = () => {
             <Link className="nav-link-mbl" to="/" onClick={handleClose}>
               Home
             </Link>
-            <Link className="nav-link-mbl" onClick={handleClose}>
+            <Link
+              className="nav-link-mbl"
+              onClick={() => handleClose("service")}
+            >
               Services
             </Link>
             <Link
@@ -99,7 +117,7 @@ const NavBar = () => {
             >
               Our Classes
             </Link>
-            <Link className="nav-link-mbl" onClick={handleClose}>
+            <Link className="nav-link-mbl" onClick={() => handleClose("about")}>
               About Us
             </Link>
             <Link className="nav-link-mbl" to="/blogs" onClick={handleClose}>
