@@ -15,9 +15,11 @@ const ScrollTopBtn = () => {
       document.body.scrollTop > 50 ||
       document.documentElement.scrollTop > 50
     ) {
-      scrollButton.style.display = "block";
+      if (scrollButton !== null) scrollButton.style.display = "block";
     } else {
-      scrollButton.style.display = "none";
+      if (scrollButton !== null) {
+        scrollButton.style.display = "none";
+      }
     }
   }
   // When scrolling this function will trigger

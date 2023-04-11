@@ -68,7 +68,9 @@ const NavBar = () => {
           <Link to="/pricing" className="nav-link">
             Pricing
           </Link>
-          <Link className="nav-link">Contact Us</Link>
+          <Link to="/contact" className="nav-link">
+            Contact Us
+          </Link>
         </Box>
 
         <Box display={{ lg: "none", md: "none", sm: "block", xs: "block" }}>
@@ -126,7 +128,7 @@ const NavBar = () => {
             <Link to="/pricing" className="nav-link-mbl" onClick={handleClose}>
               Pricing
             </Link>
-            <Link className="nav-link-mbl" onClick={handleClose}>
+            <Link className="nav-link-mbl" onClick={handleClose} to="/contact">
               Contact Us
             </Link>
           </Menu>

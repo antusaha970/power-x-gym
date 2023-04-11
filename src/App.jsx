@@ -45,6 +45,7 @@ const ViewBlog = lazy(() => import("./Components/BlogPage/ViewBlog/ViewBlog"));
 const ManageBlog = lazy(() =>
   import("./Components/Admin/ManageBlog/ManageBlog")
 );
+const ContactUs = lazy(() => import("./Components/ContactUsPage/ContactUs"));
 
 function App() {
   const [user, setUser] = useState({});
@@ -123,6 +124,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <CheckoutStep3 />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ContactUs />
               </Suspense>
             }
           />
