@@ -16,25 +16,29 @@ const BlogPost = () => {
   });
   const [file, setFile] = useState(null);
   const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("blogData", JSON.stringify(data));
-    try {
-      const response = await client.post("/postBlog", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.data) {
-        alert("Blog is posted successfully");
-        setFile(null);
-        reset();
-      } else {
-        alert("Please try again later");
-        reset();
+    if (file === null) {
+      alert("Please upload a cover photo and submit again");
+    } else {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("blogData", JSON.stringify(data));
+      try {
+        const response = await client.post("/postBlog", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (response.data) {
+          alert("Blog is posted successfully");
+          setFile(null);
+          reset();
+        } else {
+          alert("Please try again later");
+          reset();
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
   const handleFile = (e) => {

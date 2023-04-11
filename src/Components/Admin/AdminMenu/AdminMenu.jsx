@@ -18,7 +18,14 @@ const AdminMenu = () => {
       <Container maxWidth="lg">
         <AdminHeader />
         <Box>
-          <Stack>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
             <MenuButton variant="contained">
               <Link to="/admin/dashboard/userInfo">
                 See Registered User Info
@@ -27,7 +34,10 @@ const AdminMenu = () => {
             <MenuButton variant="contained">
               <Link to="/admin/dashboard/makeBlog">Make a blog post</Link>
             </MenuButton>
-          </Stack>
+            <MenuButton variant="contained">
+              <Link to="/admin/dashboard/manageBlog">Manage Blog</Link>
+            </MenuButton>
+          </Box>
         </Box>
       </Container>
     </section>
