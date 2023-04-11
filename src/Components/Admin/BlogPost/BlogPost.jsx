@@ -7,7 +7,12 @@ import { MenuButton } from "../AdminMenu/AdminMenu";
 import { Link } from "react-router-dom";
 
 const BlogPost = () => {
-  const { control, handleSubmit, reset } = useForm({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: "",
       blogBody: "",
@@ -76,6 +81,11 @@ const BlogPost = () => {
                 />
               )}
             />
+            {errors.title && (
+              <Typography variant="small" component="small" color="red">
+                Please enter a title
+              </Typography>
+            )}
             <Controller
               name="blogBody"
               control={control}
@@ -93,6 +103,11 @@ const BlogPost = () => {
                 />
               )}
             />
+            {errors.blogBody && (
+              <Typography variant="small" component="small" color="red">
+                Please enter blog body
+              </Typography>
+            )}
             <Controller
               name="author"
               control={control}
@@ -108,6 +123,11 @@ const BlogPost = () => {
                 />
               )}
             />
+            {errors.author && (
+              <Typography variant="small" component="small" color="red">
+                Please enter author name
+              </Typography>
+            )}
             <Box
               sx={{
                 padding: "10px 0",

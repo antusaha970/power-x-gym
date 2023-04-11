@@ -31,7 +31,6 @@ const ManageBlog = () => {
     fetchBlogs();
   }, [blogs]);
   const handleDelete = async (id) => {
-    console.log(id);
     try {
       const result = await client.post("/deleteBlog", { id });
       if (result.data) {

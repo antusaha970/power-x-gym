@@ -28,7 +28,6 @@ const AdminLogin = () => {
   const [admin, setAdmin] = useContext(AdminContext);
   const navigation = useNavigate();
   const location = useLocation();
-  console.log(location);
   const { from } = location.state || { from: "/admin/dashboard/menu" };
   const onSubmit = async (data) => {
     console.log(data);
