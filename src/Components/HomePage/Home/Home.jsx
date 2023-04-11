@@ -7,6 +7,7 @@ import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import Footer from "../../Shared/Footer/Footer";
 import { motion, useScroll } from "framer-motion";
 import "./Home.css";
+import ScrollTopBtn from "../ScrollTopBtn/ScrollTopBtn";
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -16,6 +17,7 @@ const Home = () => {
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
       />
+      <ScrollTopBtn />
       <Header />
       <Services />
       <AboutUs />
