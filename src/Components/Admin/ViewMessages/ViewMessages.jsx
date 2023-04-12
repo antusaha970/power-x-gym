@@ -33,14 +33,30 @@ const customStyles = {
   },
 };
 const ViewMessages = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       subject: "",
       message: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
+
   const [messages, setMessages] = useState([]);
+  const [email, setEmail] = useState("");
+  const onSubmit = async (data) => {
+    data = { ...data, email: email };
+    try {
+      const result = await client.post("/sendReplyMail", data);
+      if (result.data) {
+        alert("Reply Send successFully");
+        reset();
+        closeModal();
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error);
+      closeModal();
+    }
+  };
   useEffect(() => {
     async function fetchMessages() {
       try {
@@ -55,8 +71,9 @@ const ViewMessages = () => {
 
   Modal.setAppElement("#root");
   const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
+  function openModal(email) {
     setIsOpen(true);
+    setEmail(email);
   }
   function closeModal() {
     setIsOpen(false);
@@ -112,7 +129,9 @@ const ViewMessages = () => {
                   />
                 )}
               />
-              <Button variant="contained">Send</Button>
+              <Button variant="contained" type="submit">
+                Send
+              </Button>
             </Stack>
           </form>
         </Modal>
@@ -140,7 +159,10 @@ const ViewMessages = () => {
                     {new Date(message.sendTime).toLocaleString("en-US")}
                   </TableCell>
                   <TableCell align="center">
-                    <Button variant="contained" onClick={openModal}>
+                    <Button
+                      variant="contained"
+                      onClick={() => openModal(message.email)}
+                    >
                       Replay
                     </Button>
                   </TableCell>
