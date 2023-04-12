@@ -4,18 +4,42 @@ import {
   Button,
   Container,
   Paper,
+  Stack,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { client } from "../../../Api/Client";
 import { MenuButton } from "../AdminMenu/AdminMenu";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import { useForm, Controller } from "react-hook-form";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    padding: "30px",
+    width: "80%",
+  },
+};
 const ViewMessages = () => {
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      subject: "",
+      message: "",
+    },
+  });
+  const onSubmit = (data) => console.log(data);
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     async function fetchMessages() {
@@ -28,11 +52,70 @@ const ViewMessages = () => {
     }
     fetchMessages();
   }, []);
-  console.log(messages);
+
+  Modal.setAppElement("#root");
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <section>
       <AdminHeader />
       <Container maxWidth="lg">
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Replay Modal"
+        >
+          <Typography
+            variant="h5"
+            component="h5"
+            sx={{
+              textAlign: "center",
+              fontWeight: "bold",
+            }}
+          >
+            Send Reply Email
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack>
+              <Controller
+                name="subject"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    id="email-subject"
+                    label="Enter Email Subject"
+                    variant="outlined"
+                    margin="normal"
+                  />
+                )}
+              />
+              <Controller
+                name="message"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    id="email-message"
+                    label="Enter Email body"
+                    variant="outlined"
+                    margin="normal"
+                    multiline
+                    rows={4}
+                  />
+                )}
+              />
+              <Button variant="contained">Send</Button>
+            </Stack>
+          </form>
+        </Modal>
         <TableContainer component={Paper}>
           <Table aria-label="Member message table">
             <TableHead>
@@ -57,7 +140,9 @@ const ViewMessages = () => {
                     {new Date(message.sendTime).toLocaleString("en-US")}
                   </TableCell>
                   <TableCell align="center">
-                    <Button variant="contained">Replay</Button>
+                    <Button variant="contained" onClick={openModal}>
+                      Replay
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

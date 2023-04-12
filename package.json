@@ -21,6 +21,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.10.0",
     "stripe": "^11.17.0"
   },
