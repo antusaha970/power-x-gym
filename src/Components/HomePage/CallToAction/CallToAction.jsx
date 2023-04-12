@@ -28,7 +28,7 @@ const CallToAction = () => {
               helping you reach your fitness goals and push your limits.
             </p>
             <button className="btn-brand cta-btn">
-              <Link to="/ourClasses">JOIN US</Link>
+              <Link to="/classSchedule">JOIN US</Link>
             </button>
           </Box>
           <Box

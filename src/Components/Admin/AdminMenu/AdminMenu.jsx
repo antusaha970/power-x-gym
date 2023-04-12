@@ -37,6 +37,9 @@ const AdminMenu = () => {
             <MenuButton variant="contained">
               <Link to="/admin/dashboard/manageBlog">Manage Blog</Link>
             </MenuButton>
+            <MenuButton variant="contained">
+              <Link to="/admin/dashboard/viewMessages">View Message</Link>
+            </MenuButton>
           </Box>
         </Box>
       </Container>

@@ -46,6 +46,9 @@ const ManageBlog = lazy(() =>
   import("./Components/Admin/ManageBlog/ManageBlog")
 );
 const ContactUs = lazy(() => import("./Components/ContactUsPage/ContactUs"));
+const ViewMessages = lazy(() =>
+  import("./Components/Admin/ViewMessages/ViewMessages")
+);
 
 function App() {
   const [user, setUser] = useState({});
@@ -182,6 +185,16 @@ function App() {
               <Suspense fallback={<Loader />}>
                 <PrivateRoute isSignedIn={admin}>
                   <ManageBlog />
+                </PrivateRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/admin/dashboard/viewMessages"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PrivateRoute isSignedIn={admin}>
+                  <ViewMessages />
                 </PrivateRoute>
               </Suspense>
             }

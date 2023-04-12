@@ -30,7 +30,7 @@ const ContactUs = () => {
     } catch (error) {
       alert(error);
       console.log(error);
-      //   window.location.reload();
+      window.location.reload();
     }
   };
   return (
