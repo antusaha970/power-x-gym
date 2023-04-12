@@ -9,5 +9,7 @@
 }
 
 .boader:hover {
-    border: 1px solid gold;
+    -webkit-box-shadow: 0.5px 3px 7.5px -2.5px #ffed25;
+    -moz-box-shadow: 0.5px 3px 7.5px -2.5px #ffed25;
+    box-shadow: 0.5px 3px 7.5px -2.5px #ffed25;
 }
