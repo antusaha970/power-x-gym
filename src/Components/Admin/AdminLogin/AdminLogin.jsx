@@ -30,7 +30,6 @@ const AdminLogin = () => {
   const location = useLocation();
   const { from } = location.state || { from: "/admin/dashboard/menu" };
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const response = await client.post("/isAdmin", data);
       if (response.data) {

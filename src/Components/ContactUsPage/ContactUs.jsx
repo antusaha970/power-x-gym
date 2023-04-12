@@ -20,7 +20,6 @@ const ContactUs = () => {
   const onSubmit = async (data) => {
     try {
       const result = await client.post("/userMessage", data);
-      console.log(result.data);
       if (result.data) {
         alert(
           "Thank you for contacting with us. \n We will get back to you very soon"

@@ -23,7 +23,6 @@ const AllUserInfo = () => {
       setUserInfos(response.data);
     })();
   }, []);
-  console.log(userInfos);
   return (
     <section>
       <Container maxWidth="lg">
