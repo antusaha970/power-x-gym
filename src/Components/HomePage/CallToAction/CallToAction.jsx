@@ -11,7 +11,6 @@ const CallToAction = () => {
   const [CurrentIcon, setCurrentIcon] = useState(FitnessCenterIcon);
   const [count, setCount] = useState(0);
   useEffect(() => {
-    console.log("Running");
     const iconChange = setInterval(() => {
       setCurrentIcon(iconArray[count]);
       setCount(count + 1);
